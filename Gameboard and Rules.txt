@@ -1,0 +1,64 @@
+BOARD: 
+
+GO		Rio		Delhi		Income Tax	RailRoad	Bangkok		Cairo		Madrid		IN JAIL/PASS BY	
+		$60		$60		$200		$200		$100		$100		$120				
+		Red		Red				No Set		Orange		Orange		Orange				
+
+New York															Jakarta
+$400																$140
+Gray																Yellow		
+
+Luxury Tax															Berlin
+$100																$140
+																Yellow		
+
+London																Moscow
+$350																$160
+Gray																Yellow		
+
+Water Works															Electric Company
+$150																$150
+No Set																No Set		
+
+Tokyo																Ottawa
+$320																$180
+Pink																Green		
+
+HongKong															Seoul
+$300																$180
+Pink																Green		
+
+Paris																Rome
+$300																$200
+Pink																Green		
+
+GO TO JAIL	Canberra	Dubai		BeiJing		RailRoad	Copenhagen	Riyadh		Zurich		FREE PARKING	
+		$280		$260		$260		$200		$240		$220		$220				
+		Purple		Purple		Purple		No Set		Blue		Blue		Blue				
+
+
+
+RULES: 
+1. Each turn starts off with the player rolling 2 die
+2. Each time a player lands on or passes over “GO”, they will be paid a $200 salary :D
+3. Jail: 
+	• If a player lands on “GO TO JAIL”, they will go directly to jail without getting any sort of 'passing go' payment 
+	• Houses and rent can still be bought and collected when the player in is jail
+	• To get out of jail, the criminal can choose between paying a fine of $100 and going the next round, or waiting 4 rounds
+4. Buying Properties: 
+	• A player can only buy a property if it's unowned and they land on it
+	• The price of the property is written in the file and will also be printed out when a player land on that property
+5. Buying Houses:
+	• A player can only buy houses for properties in a full colour set owned by them 
+		• ex: Jane can only buy a house for Ottawa if she also has Seoul and Rome (green set)
+	• The prices of houses for each propery is in the file and will also be printed when the player is ready to buy a house
+6. Rent (PAY ATTENTION TO THIS):
+	• When a player lands on a property owned by another player, the owner collects rent
+	• Rent Price:
+		• Rent for railroads, the electric company, and waterworks is 20% of the original property price
+		• Rent for the rest of the properties is 10% of the original property price
+		• Rent price doubles once a player obtain all the properties in a colour set
+		• Rent increases by 5% of the original property price (rounded) for each house on the square
+			• ex:  Delhi ($60) with 3 houses --> rent: $6(2) + $3 + $3 + $3 = $21
+7. If a player owes more money than they can pay, they must give everything they have to the person they own money to (bank/player) 
+   and retire from the game :(
