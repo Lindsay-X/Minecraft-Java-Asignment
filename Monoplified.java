@@ -19,7 +19,7 @@ public class Monoplified {
 	
 	
 	public static void main (String[] args) throws Exception {
-		// addtional board setup declaration
+		// additional board setup declaration
 		int [] housePrice = new int[32]; // price of getting a house for each house
 		Map <Integer, Integer> isOwned = new HashMap<>(); // which properties are owned and by who
 		Map <Integer, String> playerIndex = new HashMap<>(); // what number each player is assigned to for array index 
@@ -126,18 +126,21 @@ public class Monoplified {
 	
 	public static void rollDie (int player) throws InterruptedException {
 		int rollDie = (int) Math.floor((((Math.random()*6)+1) + ((Math.random()*6)+1)));
+		boolean passedGo = false;
 		//check whether or not the player reaches the end of the "board" and passes "GO"
 		if(playerPlace[player] + rollDie >= board.length) {
 			playerPlace[player] =  rollDie - (board.length - playerPlace[player]);
 			money[player] += 200;
+			passedGo = true;
 		} else {
 			playerPlace[player] += rollDie;
 		}
 		
-		//ouput
+		//output
 		System.out.println("Rolling die . . . ");
 		Thread.sleep(1200);
 		System.out.println("You rolled a " + rollDie + " and landed on \"" + board[playerPlace[player]] + "\"");
+		if(passedGo) System.out.println("\nYou have passed GO" + "\nMoney in Bank: $" + money[player]);
 	}
 	
 	public static void jailTime(int player, int[] inJail) {
@@ -156,7 +159,7 @@ public class Monoplified {
 		
 		// action
 		playerPlace[player] = 8; // move player to "IN JAIL" square
-		if(!jailOption.equals("1")) {
+		if(jailOption.equals("1")) {
 			 money[player] -= 100;
 		} else{
 			inJail[player] = 4;
@@ -177,7 +180,7 @@ public class Monoplified {
 				System.out.println("Properties: ");
 				for(int i= 0; i<propCollection[player].size(); i++) {
 					int propIndex = propCollection[player].get(i);
-					System.out.println("• " + board[propIndex] + " -> " + propSet[propIndex]);
+					System.out.println("ï¿½ " + board[propIndex] + " -> " + propSet[propIndex]);
 				}
 			}
 			
@@ -385,26 +388,26 @@ public class Monoplified {
 		if(skipRule.equals("n")) {
 			System.out.println("Rules:");
 			System.out.println("1. Each turn starts off with the player rolling 2 die");
-			System.out.println("2. Each time a player lands on or passes over “GO”, they will be paid a $200 salary :D");
+			System.out.println("2. Each time a player lands on or passes over *GO*, they will be paid a $200 salary :D");
 			System.out.println( "3. Jail: \n"
-					+ "\t• If a player lands on “GO TO JAIL”, they will go directly to jail without getting any sort of 'passing go' payment \n"
-					+ "\t• Houses and rent can still be bought and collected when the player in is jail\n"
-					+ "\t• To get out of jail, the criminal can choose between paying a fine of $100 and going the next round, or waiting 4 rounds");
+					+ "\tâ€¢ If a player lands on *GO TO JAIL*, they will go directly to jail without getting any sort of 'passing go' payment \n"
+					+ "\tâ€¢ Houses and rent can still be bought and collected when the player in is jail\n"
+					+ "\tâ€¢ To get out of jail, the criminal can choose between paying a fine of $100 and going the next round, or waiting 4 rounds");
 			System.out.println("4. Buying Properties: \n"
-					+ "\t• A player can only buy a property if it's unowned and they land on it\n"
-					+ "\t• The price of the property is written in the file and will also be printed out when a player land on that property");
+					+ "\tâ€¢ A player can only buy a property if it's unowned and they land on it\n"
+					+ "\tâ€¢ The price of the property is written in the file and will also be printed out when a player land on that property");
 			System.out.println("5. Buying Houses:\n"
-					+ "\t• A player can only buy houses for properties in a full colour set owned by them \n"
-					+ "\t\t• ex: Jane can only buy a house for Ottawa if she also has Seoul and Rome (green set)\n"
-					+ "\t• The prices of houses for each propery is in the file and will also be printed when the player is ready to buy a house");
+					+ "\tâ€¢ A player can only buy houses for properties in a full colour set owned by them \n"
+					+ "\t\tâ€¢ ex: Jane can only buy a house for Ottawa if she also has Seoul and Rome (green set)\n"
+					+ "\tâ€¢ The prices of houses for each propery is in the file and will also be printed when the player is ready to buy a house");
 			System.out.println("6. Rent (PAY ATTENTION TO THIS):\n"
-					+ "\t• When a player lands on a property owned by another player, the owner collects rent\n"
-					+ "\t• Rent Price:\n"
-					+ "\t\t• Rent for railroads, the electric company, and waterworks is 20% of the original property price\n"
-					+ "\t\t• Rent for the rest of the properties is 10% of the original property price\n"
-					+ "\t\t• Rent price doubles once a player obtain all the properties in a colour set\n"
-					+ "\t\t• Rent increases by 5% of the original property price (rounded) for each house on the square\n"
-					+ "\t\t\t• ex:  Delhi ($60) with 3 houses --> rent: $6(2) + $3 + $3 + $3 = $21");
+					+ "\tâ€¢ When a player lands on a property owned by another player, the owner collects rent\n"
+					+ "\tâ€¢ Rent Price:\n"
+					+ "\t\tâ€¢ Rent for railroads, the electric company, and waterworks is 20% of the original property price\n"
+					+ "\t\tâ€¢ Rent for the rest of the properties is 10% of the original property price\n"
+					+ "\t\tâ€¢ Rent price doubles once a player obtain all the properties in a colour set\n"
+					+ "\t\tâ€¢ Rent increases by 5% of the original property price (rounded) for each house on the square\n"
+					+ "\t\t\tâ€¢ ex:  Delhi ($60) with 3 houses --> rent: $6(2) + $3 + $3 + $3 = $21");
 			System.out.println("7. If a player owes more money than they can pay, they must give everything they have to the person they own money to (bank/player) \n"
 					+ "   and retire from the game :(");
 			System.out.println();
@@ -555,26 +558,26 @@ public class Monoplified {
 		//rules
 		output.println("RULES: ");
 		output.println("1. Each turn starts off with the player rolling 2 die");
-		output.println("2. Each time a player lands on or passes over “GO”, they will be paid a $200 salary :D");
+		output.println("2. Each time a player lands on or passes over *GO*, they will be paid a $200 salary :D");
 		output.println( "3. Jail: \n"
-				+ "\t• If a player lands on “GO TO JAIL”, they will go directly to jail without getting any sort of 'passing go' payment \n"
-				+ "\t• Houses and rent can still be bought and collected when the player in is jail\n"
-				+ "\t• To get out of jail, the criminal can choose between paying a fine of $100 and going the next round, or waiting 4 rounds");
+				+ "\tâ€¢ If a player lands on *GO TO JAIL*, they will go directly to jail without getting any sort of 'passing go' payment \n"
+				+ "\tâ€¢ Houses and rent can still be bought and collected when the player in is jail\n"
+				+ "\tâ€¢ To get out of jail, the criminal can choose between paying a fine of $100 and going the next round, or waiting 4 rounds");
 		output.println("4. Buying Properties: \n"
-				+ "\t• A player can only buy a property if it's unowned and they land on it\n"
-				+ "\t• The price of the property is written in the file and will also be printed out when a player land on that property");
+				+ "\tâ€¢ A player can only buy a property if it's unowned and they land on it\n"
+				+ "\tâ€¢ The price of the property is written in the file and will also be printed out when a player land on that property");
 		output.println("5. Buying Houses:\n"
-				+ "\t• A player can only buy houses for properties in a full colour set owned by them \n"
-				+ "\t\t• ex: Jane can only buy a house for Ottawa if she also has Seoul and Rome (green set)\n"
-				+ "\t• The prices of houses for each propery is in the file and will also be printed when the player is ready to buy a house");
+				+ "\tâ€¢ A player can only buy houses for properties in a full colour set owned by them \n"
+				+ "\t\tâ€¢ ex: Jane can only buy a house for Ottawa if she also has Seoul and Rome (green set)\n"
+				+ "\tâ€¢ The prices of houses for each property is in the file and will also be printed when the player is ready to buy a house");
 		output.println("6. Rent (PAY ATTENTION TO THIS):\n"
-				+ "\t• When a player lands on a property owned by another player, the owner collects rent\n"
-				+ "\t• Rent Price:\n"
-				+ "\t\t• Rent for railroads, the electric company, and waterworks is 20% of the original property price\n"
-				+ "\t\t• Rent for the rest of the properties is 10% of the original property price\n"
-				+ "\t\t• Rent price doubles once a player obtain all the properties in a colour set\n"
-				+ "\t\t• Rent increases by 5% of the original property price (rounded) for each house on the square\n"
-				+ "\t\t\t• ex:  Delhi ($60) with 3 houses --> rent: $6(2) + $3 + $3 + $3 = $21");
+				+ "\tâ€¢ When a player lands on a property owned by another player, the owner collects rent\n"
+				+ "\tâ€¢ Rent Price:\n"
+				+ "\t\tâ€¢ Rent for railroads, the electric company, and waterworks is 20% of the original property price\n"
+				+ "\t\tâ€¢ Rent for the rest of the properties is 10% of the original property price\n"
+				+ "\t\tâ€¢ Rent price doubles once a player obtain all the properties in a colour set\n"
+				+ "\t\tâ€¢ Rent increases by 5% of the original property price (rounded) for each house on the square\n"
+				+ "\t\t\tâ€¢ ex:  Delhi ($60) with 3 houses --> rent: $6(2) + $3 + $3 + $3 = $21");
 		output.println("7. If a player owes more money than they can pay, they must give everything they have to the person they own money to (bank/player) \n"
 				+ "   and retire from the game :(");
 		
